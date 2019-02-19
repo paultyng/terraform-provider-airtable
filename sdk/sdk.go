@@ -93,28 +93,37 @@ func (c *Client) ListRecords(workspaceID, table string, options *ListRecordsOpti
 		queryParams.Add("view", options.View)
 	}
 
-	u.RawQuery = queryParams.Encode()
+	records := []Record{}
 
-	resp, err := c.httpClient.Get(u.String())
-	if err != nil {
-		return nil, err
-	}
+	for {
+		u.RawQuery = queryParams.Encode()
 
-	body := &listRecordsResponse{}
-	json.NewDecoder(resp.Body).Decode(body)
-
-	records := make([]Record, 0, len(body.Records))
-	for _, raw := range body.Records {
-		created, err := time.Parse(time.RFC3339, raw.RawCreatedTime)
+		resp, err := c.httpClient.Get(u.String())
 		if err != nil {
 			return nil, err
 		}
-		r := Record{
-			Fields:      raw.Fields,
-			ID:          raw.ID,
-			CreatedTime: created,
+
+		body := &listRecordsResponse{}
+		json.NewDecoder(resp.Body).Decode(body)
+
+		for _, raw := range body.Records {
+			created, err := time.Parse(time.RFC3339, raw.RawCreatedTime)
+			if err != nil {
+				return nil, err
+			}
+			r := Record{
+				Fields:      raw.Fields,
+				ID:          raw.ID,
+				CreatedTime: created,
+			}
+			records = append(records, r)
 		}
-		records = append(records, r)
+
+		if body.Offset == "" {
+			break
+		}
+
+		queryParams.Set("offset", body.Offset)
 	}
 
 	return records, nil
