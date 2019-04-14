@@ -2,7 +2,7 @@ module github.com/paultyng/terraform-provider-airtable
 
 require (
 	github.com/apparentlymart/go-cidr v1.0.0 // indirect
-	github.com/blang/semver v3.5.1+incompatible // indirect
+	github.com/blang/semver v3.6.1 // indirect
 	github.com/hashicorp/go-getter v1.0.3 // indirect
 	github.com/hashicorp/go-hclog v0.0.0-20190109152822-4783caec6f2e // indirect
 	github.com/hashicorp/go-plugin v0.0.0-20190212232519-b838ffee39ce // indirect
