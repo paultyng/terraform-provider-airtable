@@ -168,7 +168,7 @@ github.com/ulikunitz/xz
 github.com/ulikunitz/xz/internal/xlog
 github.com/ulikunitz/xz/lzma
 github.com/ulikunitz/xz/internal/hash
-# github.com/zclconf/go-cty v0.0.0-20190212192503-19dda139b164
+# github.com/zclconf/go-cty v0.0.0-20190519055930-4fecf87372ec
 github.com/zclconf/go-cty/cty
 github.com/zclconf/go-cty/cty/convert
 github.com/zclconf/go-cty/cty/function
