@@ -91,7 +91,7 @@ github.com/hashicorp/hcl/hcl/scanner
 github.com/hashicorp/hcl/hcl/strconv
 github.com/hashicorp/hcl/json/scanner
 github.com/hashicorp/hcl/json/token
-# github.com/hashicorp/hcl2 v0.0.0-20190214115825-fb2bc46cdbe3
+# github.com/hashicorp/hcl2 v0.0.0-20190619115043-0b64543c968c
 github.com/hashicorp/hcl2/gohcl
 github.com/hashicorp/hcl2/hcl
 github.com/hashicorp/hcl2/hclparse
@@ -168,7 +168,7 @@ github.com/ulikunitz/xz
 github.com/ulikunitz/xz/internal/xlog
 github.com/ulikunitz/xz/lzma
 github.com/ulikunitz/xz/internal/hash
-# github.com/zclconf/go-cty v0.0.0-20190212192503-19dda139b164
+# github.com/zclconf/go-cty v1.0.0
 github.com/zclconf/go-cty/cty
 github.com/zclconf/go-cty/cty/convert
 github.com/zclconf/go-cty/cty/function
@@ -176,7 +176,7 @@ github.com/zclconf/go-cty/cty/function/stdlib
 github.com/zclconf/go-cty/cty/set
 github.com/zclconf/go-cty/cty/gocty
 github.com/zclconf/go-cty/cty/json
-# golang.org/x/crypto v0.0.0-20190211182817-74369b46fc67
+# golang.org/x/crypto v0.0.0-20190426145343-a29dc8fdc734
 golang.org/x/crypto/openpgp
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/openpgp/armor
@@ -186,7 +186,7 @@ golang.org/x/crypto/openpgp/s2k
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/cast5
 golang.org/x/crypto/openpgp/elgamal
-# golang.org/x/net v0.0.0-20190213061140-3a22650c66bd
+# golang.org/x/net v0.0.0-20190502183928-7f726cade0ab
 golang.org/x/net/context
 golang.org/x/net/html
 golang.org/x/net/http2
@@ -196,9 +196,9 @@ golang.org/x/net/http/httpguts
 golang.org/x/net/http2/hpack
 golang.org/x/net/idna
 golang.org/x/net/internal/timeseries
-# golang.org/x/sys v0.0.0-20190129075346-302c3dd5f1cc
+# golang.org/x/sys v0.0.0-20190502175342-a43fa875dd82
 golang.org/x/sys/unix
-# golang.org/x/text v0.3.0
+# golang.org/x/text v0.3.2
 golang.org/x/text/unicode/norm
 golang.org/x/text/transform
 golang.org/x/text/secure/bidirule
