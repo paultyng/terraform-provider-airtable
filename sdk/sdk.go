@@ -65,7 +65,9 @@ type Record struct {
 }
 
 type ListRecordsOptions struct {
-	View string
+	View            string
+	Fields          []string
+	FilterByFormula string
 }
 
 type listRecordsResponseRecord struct {
@@ -91,6 +93,16 @@ func (c *Client) ListRecords(workspaceID, table string, options *ListRecordsOpti
 
 	if options.View != "" {
 		queryParams.Add("view", options.View)
+	}
+
+	if options.Fields != nil {
+		for _, v := range options.Fields {
+			queryParams.Add("fields", v)
+		}
+	}
+
+	if options.FilterByFormula != "" {
+		queryParams.Add("filterByFormula", options.FilterByFormula)
 	}
 
 	records := []Record{}

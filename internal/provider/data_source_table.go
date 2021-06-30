@@ -39,6 +39,17 @@ func dataSourceTable() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 			},
+			"fields": {
+				Description: "Only data for fields whose names are in this list will be included in the result." +
+					"If you don't need every field, you can use this parameter to reduce the amount of data transferred.",
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+			"filterByFormula": {
+				Description: "A formula used to filter records. If combined with the `view` parameter, " +
+					"only records in that new which satisfy the formula will be returned",
+				Optional: true,
+			},
 
 			"records": {
 				Description: "Records in the table / view.",
