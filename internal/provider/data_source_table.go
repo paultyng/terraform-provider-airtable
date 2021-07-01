@@ -87,9 +87,13 @@ func dataSourceTableRead(ctx context.Context, d *schema.ResourceData, meta inter
 	workspaceID := d.Get("workspace_id").(string)
 	table := d.Get("table").(string)
 	view := d.Get("view").(string)
+	fields := d.Get("fields").([]string)
+	filterByFormula := d.Get("filterByFormula").(string)
 
 	options := &sdk.ListRecordsOptions{
-		View: view,
+		View:            view,
+		Fields:          fields,
+		FilterByFormula: filterByFormula,
 	}
 
 	sdkRecords, err := c.client.ListRecords(workspaceID, table, options)
