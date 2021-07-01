@@ -48,6 +48,7 @@ func dataSourceTable() *schema.Resource {
 			"filterByFormula": {
 				Description: "A formula used to filter records. If combined with the `view` parameter, " +
 					"only records in that new which satisfy the formula will be returned",
+				Type:     schema.TypeList,
 				Optional: true,
 			},
 
