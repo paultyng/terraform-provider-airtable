@@ -97,7 +97,8 @@ func (c *Client) ListRecords(workspaceID, table string, options *ListRecordsOpti
 
 	if options.Fields != nil {
 		for _, v := range options.Fields {
-			queryParams.Add("fields", v)
+			i := v.(string)
+			queryParams.Add("fields", i)
 		}
 	}
 
