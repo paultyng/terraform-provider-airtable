@@ -45,7 +45,7 @@ func dataSourceTable() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"filterByFormula": {
+			"filter_by_formula": {
 				Description: "A formula used to filter records. If combined with the `view` parameter, " +
 					"only records in that new which satisfy the formula will be returned",
 				Type:     schema.TypeList,
@@ -87,13 +87,12 @@ func dataSourceTableRead(ctx context.Context, d *schema.ResourceData, meta inter
 	workspaceID := d.Get("workspace_id").(string)
 	table := d.Get("table").(string)
 	view := d.Get("view").(string)
-	fields := d.Get("fields").([]string)
-	filterByFormula := d.Get("filterByFormula").(string)
+	filter_by_formula := d.Get("filter_by_formula").(string)
 
 	options := &sdk.ListRecordsOptions{
 		View:            view,
 		Fields:          fields,
-		FilterByFormula: filterByFormula,
+		FilterByFormula: filter_by_formula,
 	}
 
 	sdkRecords, err := c.client.ListRecords(workspaceID, table, options)
