@@ -39,6 +39,21 @@ func dataSourceTable() *schema.Resource {
 				Type:        schema.TypeString,
 				Optional:    true,
 			},
+			"fields": {
+				Description: "Only data for fields whose names are in this list will be included in the result." +
+					"If you don't need every field, you can use this parameter to reduce the amount of data transferred.",
+				Type: schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+				Optional: true,
+			},
+			"filter_by_formula": {
+				Description: "A formula used to filter records. If combined with the `view` parameter, " +
+					"only records in that new which satisfy the formula will be returned",
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 
 			"records": {
 				Description: "Records in the table / view.",
@@ -75,9 +90,13 @@ func dataSourceTableRead(ctx context.Context, d *schema.ResourceData, meta inter
 	workspaceID := d.Get("workspace_id").(string)
 	table := d.Get("table").(string)
 	view := d.Get("view").(string)
+	fields := d.Get("fields").([]interface{})
+	filter_by_formula := d.Get("filter_by_formula").(string)
 
 	options := &sdk.ListRecordsOptions{
-		View: view,
+		View:            view,
+		Fields:          fields,
+		FilterByFormula: filter_by_formula,
 	}
 
 	sdkRecords, err := c.client.ListRecords(workspaceID, table, options)
