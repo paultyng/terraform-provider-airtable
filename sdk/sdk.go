@@ -66,7 +66,7 @@ type Record struct {
 
 type ListRecordsOptions struct {
 	View            string
-	Fields          []string
+	Fields          []interface{}
 	FilterByFormula string
 }
 
