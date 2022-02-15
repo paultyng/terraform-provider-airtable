@@ -69,9 +69,9 @@ type ListRecordsOptions struct {
 }
 
 type listRecordsResponseRecord struct {
-	ID             string            `json:"id"`
-	RawCreatedTime string            `json:"createdTime"`
-	Fields         map[string]string `json:"fields"`
+	ID             string                     `json:"id"`
+	RawCreatedTime string                     `json:"createdTime"`
+	RawFields      map[string]json.RawMessage `json:"fields"`
 }
 
 type listRecordsResponse struct {
@@ -111,8 +111,13 @@ func (c *Client) ListRecords(workspaceID, table string, options *ListRecordsOpti
 			if err != nil {
 				return nil, err
 			}
+			fields := make(map[string]string)
+			for key, field := range raw.RawFields {
+				val, _ := field.MarshalJSON()
+				fields[key] = string(val)
+			}
 			r := Record{
-				Fields:      raw.Fields,
+				Fields:      fields,
 				ID:          raw.ID,
 				CreatedTime: created,
 			}
